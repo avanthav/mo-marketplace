@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  /* Exact MO Brand Colors from Guidelines */
+  --color-brand-red: #FF0000;
+  --color-brand-red-hover: #E00000;
+  --color-main-gray: #DADADA;
+  --color-gray-2: #F0F0F0;
+  --color-main-black: #000000;
+  --color-main-white: #FFFFFF;
+
+  /* Aliased theme tokens */
+  --color-brand: var(--color-brand-red);
+  --color-brand-hover: var(--color-brand-red-hover);
+  --color-brand-light: #FFF0F0;
+  --color-text-primary: var(--color-main-black);
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #737373;
+  --color-page: var(--color-gray-2);
+  --color-surface: var(--color-main-white);
+  --color-border: var(--color-main-gray);
+  --color-border-subtle: #E8E8E8;
+  --color-footer: #000000;
+  --color-footer-border: #1E1E1E;
+
+  --radius-card: 10px;
+  --radius-control: 6px;
+  --radius-banner: 16px;
+
+  --container-max-width: 1440px;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-brand: var(--color-brand-red);
+  --color-brand-hover: var(--color-brand-red-hover);
+  --color-brand-light: var(--color-brand-light);
+  --color-main-gray: var(--color-main-gray);
+  --color-gray-2: var(--color-gray-2);
+  --color-main-black: var(--color-main-black);
+  --color-main-white: var(--color-main-white);
+  --color-footer: var(--color-footer);
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Scale per Brand Guidelines */
+h1, .mo-heading-1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h2, .mo-heading-2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+@media (min-width: 768px) {
+  h2, .mo-heading-2 {
+    font-size: 32px;
+  }
+}
+
+h3, .mo-subheading {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+@media (min-width: 768px) {
+  h3, .mo-subheading {
+    font-size: 20px;
+  }
+}
+
+p, .mo-body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Custom scrollbars for clean horizontal strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base custom container */
+.mo-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mo-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mo-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
