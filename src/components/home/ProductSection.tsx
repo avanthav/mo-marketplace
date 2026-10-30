@@ -21,7 +21,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   className = '',
 }) => {
   return (
-    <section className={`mo-container py-4 ${className}`}>
+    <section className={`mo-container ${className}`}>
       <SectionHeading
         title={title}
         subtitle={subtitle}

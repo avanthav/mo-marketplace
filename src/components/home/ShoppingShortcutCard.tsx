@@ -12,10 +12,10 @@ export const ShoppingShortcutCard: React.FC<ShoppingShortcutCardProps> = ({ card
   return (
     <Link
       href={card.href}
-      className="group relative flex items-center justify-between p-3.5 md:p-4 rounded-xl bg-white border border-[#DADADA] hover:border-[#FF0000]/50 transition-all duration-200 hover:shadow-xs overflow-hidden"
+      className={`group relative flex items-center justify-between p-3.5 md:p-4 rounded-[14px] ${card.bgColor || 'bg-white'} border border-[#EBEBEB] hover:border-[#FF0000]/40 transition-all duration-200 hover:shadow-xs overflow-hidden`}
     >
-      {/* Left side: Image */}
-      <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
+      {/* Left side: Thumbnail Image */}
+      <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] shrink-0">
         <Image
           src={card.image}
           alt={card.title}
@@ -26,17 +26,17 @@ export const ShoppingShortcutCard: React.FC<ShoppingShortcutCardProps> = ({ card
       </div>
 
       {/* Middle info */}
-      <div className="flex-1 px-3">
-        <h3 className="text-sm md:text-base font-bold text-[#000000] group-hover:text-[#FF0000] transition-colors">
+      <div className="flex-1 px-3 min-w-0">
+        <h3 className="text-[15px] md:text-[16px] font-bold text-[#000000] group-hover:text-[#FF0000] transition-colors leading-snug truncate">
           {card.title}
         </h3>
-        <p className="text-[11px] md:text-xs text-[#737373] line-clamp-2 mt-0.5 font-normal">
+        <p className="text-[12px] text-[#737373] line-clamp-2 mt-0.5 font-normal leading-tight">
           {card.description}
         </p>
       </div>
 
-      {/* Right button */}
-      <div className="w-7 h-7 rounded-full bg-white border border-[#DADADA] flex items-center justify-center text-[#737373] group-hover:text-[#FF0000] group-hover:border-[#FF0000] transition-all shadow-2xs shrink-0">
+      {/* Right Circular Arrow Button */}
+      <div className="w-7 h-7 rounded-full bg-white border border-[#E0E0E0] flex items-center justify-center text-[#4A4A4A] group-hover:text-[#FF0000] group-hover:border-[#FF0000] transition-all shrink-0 shadow-2xs">
         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
       </div>
     </Link>

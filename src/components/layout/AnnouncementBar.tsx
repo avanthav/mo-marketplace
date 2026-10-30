@@ -1,35 +1,61 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const AnnouncementBar: React.FC = () => {
+export interface AnnouncementBarProps {
+  deliveryText?: string;
+  minOrderAmount?: string;
+  links?: Array<{ label: string; href: string }>;
+  showIcon?: boolean;
+  className?: string;
+}
+
+export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
+  deliveryText = 'Free delivery for orders over Rs. 5,000',
+  links = [
+    { label: 'Help Center', href: '#help' },
+    { label: 'Sell on MO', href: '#sell' },
+    { label: 'Track Order', href: '#track' },
+    { label: 'Download App', href: '#download' },
+  ],
+  showIcon = true,
+  className = '',
+}) => {
   return (
-    <div className="bg-[#FF0000] text-white text-[12px] py-1.5 px-4 font-normal">
-      <div className="mo-container flex items-center justify-between">
-        {/* Left: Delivery Message with Delivery Truck */}
-        <div className="flex items-center gap-2">
-          {/* Custom Delivery Van SVG matching screenshot */}
-          <svg className="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24">
-            <path d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m1.5-9 1.96 2.5H17V9.5h2.5M6 18.5A1.5 1.5 0 0 1 4.5 17 1.5 1.5 0 0 1 6 15.5 1.5 1.5 0 0 1 7.5 17 1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/>
-          </svg>
-          <span className="font-medium tracking-tight truncate">
-            Free delivery for orders over Rs. 5,000
+    <div
+      className={`w-full bg-[#FF0000] text-white h-[42px] flex items-center select-none text-[12px] font-semibold leading-none ${className}`}
+    >
+      <div className="mo-container flex items-center justify-between w-full h-full">
+        {/* Left: Delivery outline icon and text */}
+        <div className="flex items-center gap-2.5">
+          {showIcon && (
+            <svg
+              className="w-4 h-4 stroke-white stroke-[1.8] fill-none shrink-0"
+              viewBox="0 0 24 24"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M1 3h15v13H1z" />
+              <path d="M16 8h4l3 3v5h-7V8z" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+          )}
+          <span className="font-semibold text-white text-[12px] tracking-normal truncate">
+            {deliveryText}
           </span>
         </div>
 
-        {/* Right utility links */}
-        <div className="hidden sm:flex items-center gap-6 text-[11px] font-medium opacity-95">
-          <Link href="#help" className="hover:underline transition-all">
-            Help Center
-          </Link>
-          <Link href="#sell" className="hover:underline transition-all">
-            Sell on MO
-          </Link>
-          <Link href="#track" className="hover:underline transition-all">
-            Track Order
-          </Link>
-          <Link href="#download" className="hover:underline transition-all">
-            Download App
-          </Link>
+        {/* Right: Quick Utility Links */}
+        <div className="hidden sm:flex items-center gap-6 lg:gap-8 text-[12px] font-semibold">
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-white hover:text-white/85 transition-opacity"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

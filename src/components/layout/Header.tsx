@@ -2,97 +2,116 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Menu,
   X,
   MapPin,
-  User,
   Heart,
   ShoppingCart,
 } from 'lucide-react';
 import { SearchBar } from './SearchBar';
-import { MoLogo } from '@/components/ui/MoLogo';
 
-interface HeaderProps {
+export interface HeaderProps {
   cartCount?: number;
   wishlistCount?: number;
+  deliverTo?: string;
+  onSearch?: (query: string) => void;
+  className?: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   cartCount = 0,
   wishlistCount = 0,
+  deliverTo = 'Colombo',
+  onSearch,
+  className = '',
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-[#F0F0F0]">
+    <header className={`bg-white border-b border-[#F0F0F0] ${className}`}>
       <div className="mo-container">
-        <div className="flex items-center justify-between gap-4 md:gap-8 h-16 md:h-[72px]">
-          {/* Left section: Hamburger Icon + MO Logo */}
-          <div className="flex items-center gap-3 md:gap-4 shrink-0">
-            {/* Hamburger button visible on all or mobile, styled thin three horizontal bars */}
+        <div className="flex items-center justify-between h-[70px]">
+          {/* Left section: Hamburger Icon + MO Logo + Search Bar with exact 35px gap */}
+          <div className="flex items-center flex-1 min-w-0">
+            {/* Hamburger button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1 text-[#000000] hover:text-[#FF0000] transition-colors focus:outline-none cursor-pointer"
+              className="p-1 text-[#000000] hover:text-[#FF0000] transition-colors focus:outline-none cursor-pointer shrink-0 mr-3 sm:mr-4"
               aria-label="Toggle menu"
             >
-              <Menu className="w-6 h-6 stroke-[1.8]" />
+              <Menu className="w-5 h-5 md:w-6 md:h-6 stroke-[1.8]" />
             </button>
 
-            {/* MO Logo exactly as in screenshot */}
-            <Link href="/" className="flex items-center">
-              <MoLogo className="h-7 md:h-8 w-auto" />
+            {/* MO Logo */}
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/images/logo_mo.svg"
+                alt="MO Logo"
+                width={72}
+                height={34}
+                priority
+                className="h-7 md:h-[30px] w-auto object-contain"
+              />
             </Link>
+
+            {/* Gap 35px from Logo to Search Bar */}
+            <div className="hidden md:flex flex-1 ml-[35px] mr-[69px]">
+              <SearchBar onSearch={onSearch} />
+            </div>
           </div>
 
-          {/* Middle: Prominent Wide Search Bar (Desktop) */}
-          <div className="hidden md:flex flex-1 justify-center max-w-[720px]">
-            <SearchBar />
-          </div>
-
-          {/* Right section: Deliver to Colombo | Sign In My Account | Wishlist | Cart */}
-          <div className="flex items-center gap-4 lg:gap-6 shrink-0">
+          {/* Right section: Deliver to | Sign in | Wishlist | Cart */}
+          <div className="flex items-center gap-5 lg:gap-7 shrink-0">
             {/* Deliver to Colombo */}
-            <div className="hidden lg:flex items-center gap-2 cursor-pointer group text-left select-none">
-              <MapPin className="w-5 h-5 text-[#4A4A4A] group-hover:text-[#FF0000] transition-colors stroke-[1.8]" />
-              <div className="text-xs leading-tight">
+            <div className="hidden lg:flex items-center gap-2 cursor-pointer group text-left select-none shrink-0">
+              <MapPin className="w-5 h-5 text-[#333333] group-hover:text-[#FF0000] transition-colors stroke-[1.6]" />
+              <div className="text-[12px] leading-tight">
                 <span className="text-[#8E8E93] block text-[11px] font-normal">Deliver to</span>
-                <span className="font-semibold text-[#000000]">Colombo</span>
+                <span className="font-semibold text-[#000000]">{deliverTo}</span>
               </div>
             </div>
 
-            {/* Sign In / My Account */}
+            {/* Sign in / My Account */}
             <Link
               href="#account"
-              className="hidden sm:flex items-center gap-2 text-left group select-none"
+              className="hidden sm:flex items-center gap-2 text-left group select-none shrink-0"
             >
-              <User className="w-5 h-5 text-[#4A4A4A] group-hover:text-[#FF0000] transition-colors stroke-[1.8]" />
-              <div className="text-xs leading-tight">
+              {/* User Avatar outline matching Figma */}
+              <svg
+                className="w-5 h-5 text-[#333333] group-hover:text-[#FF0000] transition-colors stroke-current stroke-[1.6] fill-none"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="7" r="4" />
+                <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+              </svg>
+              <div className="text-[12px] leading-tight">
                 <span className="text-[#8E8E93] block text-[11px] font-normal">Sign in</span>
                 <span className="font-semibold text-[#000000]">My Account</span>
               </div>
             </Link>
 
-            {/* Wishlist Icon with Red Circular Badge */}
+            {/* Wishlist Icon with Red Badge */}
             <Link
               href="#wishlist"
-              className="relative p-1 text-[#000000] hover:text-[#FF0000] transition-colors flex items-center justify-center"
+              className="relative p-1 text-[#1E1E1E] hover:text-[#FF0000] transition-colors flex items-center justify-center shrink-0"
               aria-label="Wishlist"
             >
-              <Heart className="w-6 h-6 stroke-[1.6]" />
-              <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[17px] h-[17px] px-1 text-[10px] font-bold text-white bg-[#FF0000] rounded-full">
+              <Heart className="w-5 h-5 md:w-[22px] md:h-[22px] stroke-[1.6]" />
+              <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[16px] h-[16px] px-1 text-[10px] font-bold text-white bg-[#FF0000] rounded-full">
                 {wishlistCount}
               </span>
             </Link>
 
-            {/* Cart Icon with Red Circular Badge */}
+            {/* Cart Icon with Red Badge */}
             <Link
               href="#cart"
-              className="relative p-1 text-[#000000] hover:text-[#FF0000] transition-colors flex items-center justify-center"
+              className="relative p-1 text-[#1E1E1E] hover:text-[#FF0000] transition-colors flex items-center justify-center shrink-0"
               aria-label="Shopping Cart"
             >
-              <ShoppingCart className="w-6 h-6 stroke-[1.6]" />
-              <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[17px] h-[17px] px-1 text-[10px] font-bold text-white bg-[#FF0000] rounded-full">
+              <ShoppingCart className="w-5 h-5 md:w-[22px] md:h-[22px] stroke-[1.6]" />
+              <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[16px] h-[16px] px-1 text-[10px] font-bold text-white bg-[#FF0000] rounded-full">
                 {cartCount}
               </span>
             </Link>
@@ -101,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Search Bar Row */}
         <div className="pb-3 md:hidden">
-          <SearchBar />
+          <SearchBar onSearch={onSearch} />
         </div>
       </div>
 
@@ -111,7 +130,13 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="bg-white w-4/5 max-w-sm h-full p-5 overflow-y-auto flex flex-col justify-between border-r border-[#DADADA]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#F0F0F0]">
-                <MoLogo className="h-7 w-auto" />
+                <Image
+                  src="/images/logo_mo.svg"
+                  alt="MO Logo"
+                  width={72}
+                  height={34}
+                  className="h-7 w-auto object-contain"
+                />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-1 text-[#737373] hover:text-[#000000]"
@@ -150,10 +175,16 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="border-t border-[#F0F0F0] pt-4 space-y-2 text-xs text-[#737373]">
               <div className="flex items-center gap-2 py-1">
                 <MapPin className="w-4 h-4 text-[#FF0000]" />
-                <span className="text-[#000000]">Deliver to Colombo, Sri Lanka</span>
+                <span className="text-[#000000]">Deliver to {deliverTo}, Sri Lanka</span>
               </div>
               <div className="flex items-center gap-2 py-1">
-                <User className="w-4 h-4 text-[#FF0000]" />
+                <svg
+                  className="w-4 h-4 text-[#FF0000] stroke-current stroke-[1.8] fill-none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+                </svg>
                 <span className="text-[#000000]">Sign In / Create Account</span>
               </div>
             </div>

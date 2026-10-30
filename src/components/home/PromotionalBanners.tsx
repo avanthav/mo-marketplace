@@ -5,7 +5,7 @@ import { PROMO_BANNER_ROW } from '@/data/categories';
 
 export const PromotionalBanners: React.FC = () => {
   return (
-    <div className="mo-container py-3">
+    <div className="mo-container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {PROMO_BANNER_ROW.map((banner) => (
           <div
