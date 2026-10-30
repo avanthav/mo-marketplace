@@ -18,12 +18,12 @@ export const FlashSale: React.FC = () => {
   };
 
   return (
-    <div className="mo-container py-4">
-      <div className="bg-white p-4 md:p-6 rounded-2xl border border-[#DADADA] shadow-2xs">
+    <div className="mo-container">
+      <div className="bg-white p-4 md:p-6 rounded-[20px] border border-[#EBEBEB] shadow-2xs">
         {/* Header row */}
-        <div className="flex items-center justify-between flex-wrap gap-3 pb-4 border-b border-[#DADADA]">
-          <div className="flex items-center gap-3 md:gap-5 flex-wrap">
-            <h2 className="text-lg md:text-xl font-bold tracking-tight text-[#FF0000] uppercase">
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3">
+          <div className="flex items-center gap-3 md:gap-4 flex-wrap">
+            <h2 className="text-lg md:text-xl font-extrabold tracking-tight text-[#FF0000] uppercase">
               Flash Sale
             </h2>
             <CountdownTimer initialHours={3} initialMinutes={12} initialSeconds={42} />
@@ -39,31 +39,31 @@ export const FlashSale: React.FC = () => {
         </div>
 
         {/* Carousel / Product items */}
-        <div className="relative pt-4 group/carousel">
+        <div className="relative pt-2 group/carousel">
           {/* Scroll Buttons */}
           <button
             onClick={() => scroll('left')}
             aria-label="Previous products"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-20 w-8 h-8 rounded-full bg-white shadow-md border border-[#DADADA] text-[#000000] flex items-center justify-center hover:bg-[#F0F0F0] transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3.5 z-20 w-8 h-8 rounded-full bg-[#EDEDED] hover:bg-[#E0E0E0] text-[#737373] flex items-center justify-center transition-all shadow-xs"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => scroll('right')}
             aria-label="Next products"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-20 w-8 h-8 rounded-full bg-white shadow-md border border-[#DADADA] text-[#000000] flex items-center justify-center hover:bg-[#F0F0F0] transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3.5 z-20 w-8 h-8 rounded-full bg-[#EDEDED] hover:bg-[#E0E0E0] text-[#737373] flex items-center justify-center transition-all shadow-xs"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
 
           <div
             ref={scrollRef}
-            className="flex gap-3.5 overflow-x-auto no-scrollbar scroll-smooth pb-1"
+            className="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth pb-1"
           >
             {FLASH_SALE_PRODUCTS.map((prod) => (
               <div
                 key={prod.id}
-                className="w-[160px] sm:w-[180px] md:w-[200px] shrink-0"
+                className="w-[145px] sm:w-[155px] md:w-[165px] lg:w-[172px] shrink-0"
               >
                 <ProductCard product={prod} />
               </div>

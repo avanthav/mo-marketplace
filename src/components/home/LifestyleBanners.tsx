@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const LifestyleBanners: React.FC = () => {
   return (
-    <div className="mo-container py-4">
+    <div className="mo-container">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left Big Banner: Smart Tech Better Life */}
         <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[400px] flex flex-col justify-between p-6 sm:p-8 bg-[#000000] border border-[#1E1E1E] text-white group shadow-xs">
