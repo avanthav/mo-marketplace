@@ -13,7 +13,7 @@ import { FEATURED_PRODUCTS_GRID, GLOW_MORE_PRODUCTS } from '@/data/products';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f5f5f7]">
+    <div className="min-h-screen flex flex-col bg-[#FDFDFD]">
       {/* 1. Slim Red Announcement Bar */}
       <AnnouncementBar />
 
@@ -24,7 +24,7 @@ export default function Home() {
       <MainNavigation />
 
       {/* Main Content Area */}
-      <main className="flex-1 pb-10">
+      <main className="flex-1 flex flex-col gap-[14px] pt-[14px] pb-10">
         {/* 4. Hero Promotional Banners */}
         <HeroBanners />
 

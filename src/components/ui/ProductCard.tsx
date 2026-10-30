@@ -46,11 +46,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <button
           onClick={toggleWishlist}
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-          className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-white/95 hover:bg-white text-[#737373] hover:text-[#FF0000] flex items-center justify-center shadow-2xs transition-transform active:scale-90"
+          className="absolute top-2 right-2 z-10 w-6 h-6 rounded-full bg-transparent hover:bg-white/80 text-[#737373] hover:text-[#FF0000] flex items-center justify-center transition-all active:scale-90"
         >
           <Heart
             className={`w-4 h-4 transition-colors ${
-              isWishlisted ? 'fill-[#FF0000] text-[#FF0000]' : ''
+              isWishlisted ? 'fill-[#FF0000] text-[#FF0000]' : 'stroke-[#000000] stroke-[1.5]'
             }`}
           />
         </button>
@@ -77,40 +77,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col flex-1 p-3">
+      <div className="flex flex-col flex-1 p-2.5">
         {/* Title */}
         <Link
           href={`#product-${product.id}`}
-          className="text-xs md:text-sm font-medium text-[#000000] line-clamp-1 hover:text-[#FF0000] transition-colors mb-1.5"
+          className="text-xs font-medium text-[#000000] line-clamp-1 hover:text-[#FF0000] transition-colors mb-1"
           title={product.name}
         >
           {product.name}
         </Link>
 
         {/* Price Area */}
-        <Price
-          price={product.price}
-          originalPrice={product.originalPrice}
-          size="sm"
-        />
-
-        {/* Footer info: Rating or Location */}
-        <div className="mt-auto pt-2 flex items-center justify-between text-[11px] text-[#737373]">
-          {product.rating ? (
-            <div className="flex items-center gap-1 text-[#000000] font-medium">
-              <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-              <span>{product.rating.toFixed(1)}</span>
-              {product.reviewCount && (
-                <span className="text-[#737373]">({product.reviewCount})</span>
-              )}
-            </div>
-          ) : product.location ? (
-            <div className="flex items-center gap-1 text-[#737373] truncate">
-              <MapPin className="w-3 h-3 shrink-0" />
-              <span className="truncate">{product.location}</span>
-            </div>
-          ) : (
-            <span className="text-[#737373]">{product.category}</span>
+        <div className="flex items-baseline gap-1.5 flex-wrap">
+          <span className="text-xs md:text-sm font-bold text-[#FF0000]">
+            Rs. {product.price.toLocaleString()}
+          </span>
+          {product.originalPrice && product.originalPrice > product.price && (
+            <span className="text-[10px] md:text-xs text-[#9E9E9E] line-through font-normal">
+              Rs. {product.originalPrice.toLocaleString()}
+            </span>
           )}
         </div>
       </div>

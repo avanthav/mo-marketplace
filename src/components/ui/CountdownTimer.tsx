@@ -34,20 +34,24 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   const pad = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="flex items-center gap-1 font-mono text-xs md:text-sm font-bold text-[#FF0000]">
-      <span className="text-[#4A4A4A] font-sans text-xs font-medium mr-1.5 hidden sm:inline">
+    <div className="flex items-center gap-1.5 font-mono text-xs md:text-sm font-bold text-[#FF0000]">
+      <span className="text-[#000000] font-sans text-xs md:text-sm font-medium mr-1">
         Ends in
       </span>
-      <span className="bg-[#FF0000] text-white px-1.5 py-0.5 rounded text-xs">
+      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
         {pad(hours)}
       </span>
-      <span className="text-[#FF0000]">:</span>
-      <span className="bg-[#FF0000] text-white px-1.5 py-0.5 rounded text-xs">
+      <span className="text-[#FF0000] font-bold">:</span>
+      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
         {pad(minutes)}
       </span>
-      <span className="text-[#FF0000]">:</span>
-      <span className="bg-[#FF0000] text-white px-1.5 py-0.5 rounded text-xs">
+      <span className="text-[#FF0000] font-bold">:</span>
+      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
         {pad(seconds)}
+      </span>
+      <span className="text-[#FF0000] font-bold">:</span>
+      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
+        18
       </span>
     </div>
   );
