@@ -8,6 +8,7 @@ import { PopularCategories } from '@/components/home/PopularCategories';
 import { PromotionalBanners } from '@/components/home/PromotionalBanners';
 import { ProductSection } from '@/components/home/ProductSection';
 import { LifestyleBanners } from '@/components/home/LifestyleBanners';
+import { TextTicker } from '@/components/ui/TextTicker';
 import { Footer } from '@/components/layout/Footer';
 import { FEATURED_PRODUCTS_GRID, GLOW_MORE_PRODUCTS } from '@/data/products';
 
@@ -17,30 +18,33 @@ export default function Home() {
       {/* 1. Slim Red Announcement Bar */}
       <AnnouncementBar />
 
-      {/* 2. Main Header */}
+      {/* 2. Auto-Scrolling Text Slider (Positioned right after the red announcement bar) */}
+      <TextTicker />
+
+      {/* 3. Main Header */}
       <Header cartCount={2} wishlistCount={4} />
 
-      {/* 3. Primary Category / Channel Navigation */}
+      {/* 4. Primary Category / Channel Navigation */}
       <MainNavigation />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col gap-[14px] pt-[14px] pb-10">
-        {/* 4. Hero Promotional Banners */}
+      <main className="flex-1 flex flex-col gap-5 pt-5 pb-10">
+        {/* Hero Promotional Banners */}
         <HeroBanners />
 
-        {/* 5. Shopping Shortcut Cards */}
+        {/* Shopping Shortcut Cards */}
         <CategoryShortcuts />
 
-        {/* 6. Flash Sale with Countdown Timer & Horizontal Scroll */}
+        {/* Flash Sale with Countdown Timer & Horizontal Scroll */}
         <FlashSale />
 
-        {/* 7. Popular Categories strip */}
+        {/* Popular Categories strip */}
         <PopularCategories />
 
-        {/* 8. Promotional 3-Banner Row */}
+        {/* Promotional 3-Banner Row */}
         <PromotionalBanners />
 
-        {/* 9. Featured Products Grid (6 columns desktop) */}
+        {/* Featured Products Grid (6 columns desktop) */}
         <ProductSection
           title="Featured Products"
           subtitle="Top picks curated for you"
@@ -49,10 +53,10 @@ export default function Home() {
           columns={6}
         />
 
-        {/* 10. Lifestyle Editorial Banners (Smart tech watch + 2 stacked) */}
+        {/* Lifestyle Editorial Banners (Smart tech watch + 2 stacked) */}
         <LifestyleBanners />
 
-        {/* 11. Additional Product Section: Glow More. Care Better. */}
+        {/* Additional Product Section: Glow More. Care Better. */}
         <ProductSection
           title="Glow More. Care Better."
           subtitle="Trending beauty, gadgets, and lifestyle favorites"
@@ -62,7 +66,7 @@ export default function Home() {
         />
       </main>
 
-      {/* 12. Full-width Dark Navy Footer */}
+      {/* Full-width Dark Navy Footer */}
       <Footer />
     </div>
   );

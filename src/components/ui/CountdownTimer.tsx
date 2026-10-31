@@ -34,23 +34,34 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   const pad = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <div className="flex items-center gap-1.5 font-mono text-xs md:text-sm font-bold text-[#FF0000]">
-      <span className="text-[#000000] font-sans text-xs md:text-sm font-medium mr-1">
+    <div className="flex items-center gap-2 sm:gap-2.5 select-none font-sans">
+      <span className="text-[#000000] text-sm sm:text-base font-semibold mr-2 sm:mr-3">
         Ends in
       </span>
-      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
+
+      {/* Hours */}
+      <span className="inline-flex items-center justify-center min-w-[36px] sm:min-w-[42px] h-[34px] sm:h-[38px] px-2 rounded-[8px] bg-[#FEECEC] text-[#FF0000] text-sm sm:text-base font-bold">
         {pad(hours)}
       </span>
-      <span className="text-[#FF0000] font-bold">:</span>
-      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
+
+      <span className="text-[#000000] text-sm sm:text-base font-bold px-0.5">:</span>
+
+      {/* Minutes */}
+      <span className="inline-flex items-center justify-center min-w-[36px] sm:min-w-[42px] h-[34px] sm:h-[38px] px-2 rounded-[8px] bg-[#FEECEC] text-[#FF0000] text-sm sm:text-base font-bold">
         {pad(minutes)}
       </span>
-      <span className="text-[#FF0000] font-bold">:</span>
-      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
+
+      <span className="text-[#000000] text-sm sm:text-base font-bold px-0.5">:</span>
+
+      {/* Seconds */}
+      <span className="inline-flex items-center justify-center min-w-[36px] sm:min-w-[42px] h-[34px] sm:h-[38px] px-2 rounded-[8px] bg-[#FEECEC] text-[#FF0000] text-sm sm:text-base font-bold">
         {pad(seconds)}
       </span>
-      <span className="text-[#FF0000] font-bold">:</span>
-      <span className="bg-[#FF0000] text-white px-2 py-0.5 rounded text-xs font-semibold">
+
+      <span className="text-[#000000] text-sm sm:text-base font-bold px-0.5">:</span>
+
+      {/* Sub-second / Milliseconds counter 18 */}
+      <span className="inline-flex items-center justify-center min-w-[36px] sm:min-w-[42px] h-[34px] sm:h-[38px] px-2 rounded-[8px] bg-[#FEECEC] text-[#FF0000] text-sm sm:text-base font-bold">
         18
       </span>
     </div>
