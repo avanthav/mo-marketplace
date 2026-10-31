@@ -13,7 +13,7 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
   deliveryText = 'Free delivery for orders over Rs. 5,000',
   links = [
     { label: 'Help Center', href: '#help' },
-    { label: 'Sell on MO', href: '#sell' },
+    { label: 'Sell on MO', href: '#sell', isButton: true },
     { label: 'Track Order', href: '#track' },
     { label: 'Download App', href: '#download' },
   ],
@@ -45,17 +45,27 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
           </span>
         </div>
 
-        {/* Right: Quick Utility Links */}
-        <div className="hidden sm:flex items-center gap-6 lg:gap-8 text-[12px] font-semibold">
-          {links.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-white hover:text-white/85 transition-opacity"
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Right: Quick Utility Links + Pill Button */}
+        <div className="hidden sm:flex items-center gap-5 lg:gap-6 text-[12px] font-semibold">
+          {links.map((link: any) =>
+            link.isButton ? (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="inline-flex items-center justify-center px-3.5 py-1.5 rounded-lg bg-[#FF2B44] hover:bg-white hover:text-[#FF0000] text-white font-bold text-[12px] shadow-xs transition-all active:scale-95"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-white hover:text-white/85 transition-opacity"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </div>

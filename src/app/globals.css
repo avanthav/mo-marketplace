@@ -101,18 +101,27 @@ p, .mo-body {
   scrollbar-width: none;
 }
 
-/* Base custom container */
+/* Base custom container: 390px on mobile screens, expanding on desktop */
 .mo-container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+@media (min-width: 390px) and (max-width: 639px) {
+  .mo-container {
+    max-width: 390px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }
 
 @media (min-width: 640px) {
   .mo-container {
+    max-width: 1440px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -123,4 +132,24 @@ p, .mo-body {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+/* Continuous infinite marquee text ticker */
+@keyframes moTicker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333333%);
+  }
+}
+
+.mo-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: moTicker 28s linear infinite;
+}
+
+.mo-ticker-track:hover {
+  animation-play-state: paused;
 }
