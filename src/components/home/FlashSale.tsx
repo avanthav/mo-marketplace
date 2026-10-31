@@ -19,11 +19,16 @@ export const FlashSale: React.FC = () => {
 
   return (
     <div className="mo-container">
-      <div className="bg-white p-4 md:p-6 rounded-[20px] border border-[#EBEBEB] shadow-2xs">
+      <div
+        className="bg-white p-4 md:p-6 rounded-[20px]"
+        style={{
+          boxShadow: '1px 1px 4.7px rgba(0, 0, 0, 0.06)',
+        }}
+      >
         {/* Header row */}
-        <div className="flex items-center justify-between flex-wrap gap-3 pb-3">
-          <div className="flex items-center gap-3 md:gap-4 flex-wrap">
-            <h2 className="text-lg md:text-xl font-extrabold tracking-tight text-[#FF0000] uppercase">
+        <div className="flex items-center justify-between flex-wrap gap-4 pb-3">
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+            <h2 className="text-xl sm:text-2xl md:text-[24px] font-black tracking-tight text-[#FF0000] uppercase">
               Flash Sale
             </h2>
             <CountdownTimer initialHours={3} initialMinutes={12} initialSeconds={42} />

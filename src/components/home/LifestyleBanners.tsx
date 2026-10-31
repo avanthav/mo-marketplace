@@ -5,94 +5,100 @@ import Image from 'next/image';
 export const LifestyleBanners: React.FC = () => {
   return (
     <div className="mo-container">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Left Big Banner: Smart Tech Better Life */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[340px] sm:min-h-[400px] flex flex-col justify-between p-6 sm:p-8 bg-[#000000] border border-[#1E1E1E] text-white group shadow-xs">
+      {/* 
+        Container Grid:
+        Desktop Height exactly 595px (or 592px)
+        Left card takes full 595px height
+        Right column has two stacked cards that together fill 595px with a 14px gap (each ~290px)
+        Rounded corners: 12px (matching Figma r: 12)
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[14px] lg:h-[595px]">
+        {/* Left Big Banner: Smart Tech Better Life (Watch) - exact height 595px */}
+        <div className="relative rounded-[12px] overflow-hidden w-full h-[360px] sm:h-[440px] lg:h-full flex flex-col justify-between p-6 sm:p-8 bg-[#000000] text-white group shadow-xs">
           <Image
-            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1000&auto=format&fit=crop&q=80"
+            src="/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg"
             alt="Smart Tech Better Life"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-center group-hover:scale-102 transition-transform duration-500 opacity-60"
+            className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/50" />
 
           {/* Top text */}
           <div className="relative z-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white">
+            <h4 className="text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-white leading-tight">
               Smart Tech Better Life
-            </h3>
-            <p className="text-xs sm:text-sm text-[#DADADA] mt-1 font-normal">
+            </h4>
+            <p className="text-sm sm:text-base text-[#E0E0E0] mt-1.5 font-normal">
               Discover smart watches and wearables
             </p>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="relative z-10 pt-16">
+          {/* Bottom Right CTA */}
+          <div className="relative z-10 flex justify-end">
             <Link
               href="#smart-tech"
-              className="inline-flex items-center px-4 py-2 rounded-full bg-white text-[#000000] hover:bg-[#F0F0F0] text-xs sm:text-sm font-bold transition-all shadow-xs active:scale-95"
+              className="inline-flex items-center px-6 py-2.5 rounded-full bg-white text-[#000000] hover:bg-[#F0F0F0] text-xs sm:text-sm font-bold transition-all shadow-xs active:scale-95"
             >
               Shop Now
             </Link>
           </div>
         </div>
 
-        {/* Right Stacked 2 Banners */}
-        <div className="flex flex-col gap-4">
-          {/* Top Stacked Banner */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[160px] sm:min-h-[190px] flex flex-col justify-end p-5 sm:p-6 bg-[#000000] border border-[#1E1E1E] text-white group shadow-xs">
+        {/* Right Stacked 2 Banners: Turn up the sound & Your style your statement */}
+        <div className="flex flex-col gap-[14px] lg:h-full">
+          {/* Top Stacked Card: Turn up the sound */}
+          <div className="relative rounded-[12px] overflow-hidden w-full flex-1 min-h-[220px] lg:min-h-0 flex flex-col justify-end p-6 sm:p-7 bg-[#000000] text-white group shadow-xs">
             <Image
-              src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80"
+              src="/images/priscilla-du-preez-nF8xhLMmg0c-unsplash.jpg"
               alt="Turn up the sound"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center group-hover:scale-102 transition-transform duration-500 opacity-65"
+              className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
 
-            <div className="relative z-10 flex items-end justify-between">
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold tracking-tight text-white">
-                  Turn up the sound
-                </h4>
-                <p className="text-xs text-[#DADADA] mt-0.5 font-normal">Enjoy Hi-Fi</p>
-              </div>
-
-              <Link
-                href="#audio"
-                className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F0F0F0] text-[#000000] text-xs font-bold transition-colors shrink-0"
-              >
-                Explore Audio
-              </Link>
+            {/* Bottom text right-aligned to match Figma */}
+            <div className="relative z-10 flex flex-col items-end text-right">
+              <h4 className="text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-white leading-tight">
+                Turn up the sound
+              </h4>
+              <p className="text-sm sm:text-base text-[#E0E0E0] mt-1.5 font-normal">
+                Enjoy Today
+              </p>
             </div>
           </div>
 
-          {/* Bottom Stacked Banner */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[160px] sm:min-h-[190px] flex flex-col justify-end p-5 sm:p-6 bg-[#000000] border border-[#1E1E1E] text-white group shadow-xs">
+          {/* Bottom Stacked Card: Your style your statement */}
+          <div className="relative rounded-[12px] overflow-hidden w-full flex-1 min-h-[220px] lg:min-h-0 flex flex-col justify-between p-6 sm:p-7 bg-[#000000] text-white group shadow-xs">
             <Image
-              src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=800&auto=format&fit=crop&q=80"
+              src="/images/lance-reis-RQO2DmrRJFg-unsplash.jpg"
               alt="Your style your statement"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center group-hover:scale-102 transition-transform duration-500 opacity-65"
+              className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/20" />
 
-            <div className="relative z-10 flex items-end justify-between">
-              <div>
-                <h4 className="text-lg sm:text-xl font-bold tracking-tight text-white">
-                  Your style your statement
-                </h4>
-                <p className="text-xs text-[#DADADA] mt-0.5 font-normal">Trending women fashion</p>
-              </div>
-
+            {/* Top Right Discover more button */}
+            <div className="relative z-10 flex justify-end">
               <Link
-                href="#fashion"
-                className="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#F0F0F0] text-[#000000] text-xs font-bold transition-colors shrink-0"
+                href="#style"
+                className="inline-flex items-center px-5 py-2 rounded-full bg-white text-[#000000] hover:bg-[#F0F0F0] text-xs sm:text-sm font-bold transition-all shadow-xs active:scale-95"
               >
                 Discover more
               </Link>
+            </div>
+
+            {/* Bottom Left text */}
+            <div className="relative z-10 text-left">
+              <h4 className="text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-white leading-tight">
+                Your style your statement
+              </h4>
+              <p className="text-sm sm:text-base text-[#E0E0E0] mt-1.5 font-normal">
+                Trending women fashion
+              </p>
             </div>
           </div>
         </div>
