@@ -9,14 +9,14 @@ export const Footer: React.FC = () => {
       <div className="mo-container flex-1 pt-12 md:pt-14 pb-10 flex flex-col justify-between">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 lg:gap-10">
           {/* Col 1: Brand & Bio & Socials (Width: ~3 cols) */}
-          <div className="md:col-span-3 flex flex-col">
-            <Link href="/" className="inline-block transition-transform hover:scale-105 duration-200">
+          <div className="md:col-span-3 flex flex-col items-start">
+            <Link href="/" className="inline-flex items-center shrink-0 transition-transform hover:scale-105 duration-200">
               <Image
                 src="/images/logo_mo.svg"
                 alt="MO Logo"
-                width={84}
-                height={40}
-                className="h-9 w-auto object-contain"
+                width={72}
+                height={34}
+                className="h-6 sm:h-7 md:h-[30px] w-auto object-contain"
               />
             </Link>
 
